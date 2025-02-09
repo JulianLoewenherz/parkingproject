@@ -26,14 +26,19 @@ export default function FlagScreen() {
         quality: 1,
       });
 
-      console.log(result);
-      if (!result.cancelled) {
-        setImage(result.uri);
+      if (!result.canceled) {
+        setImage(result.assets[0].uri);
       }
     } catch (error) {
       console.error('Error taking photo:', error);
     }
   };
+
+  const submitImage = async() => {
+
+
+
+  }
 
   return (
     <View style={styles.container}>
@@ -62,8 +67,8 @@ export default function FlagScreen() {
 
       {/* Footer Section */}
       <View style={styles.footer}>
-        <Button title="Submit Incident" onPress={() => { /* Handle submit */ }} />
-        <Button title="Cancel" onPress={() => { /* Handle cancel/navigation */ }} />
+        <Button title="Submit Incident" onPress={() => { submitImage }} />
+        <Button title="Cancel" onPress={() => { () => router.push("/index")}} />
       </View>
     </View>
   );
