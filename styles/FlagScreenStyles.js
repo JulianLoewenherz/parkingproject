@@ -24,7 +24,7 @@ const styles = StyleSheet.create({
     marginBottom: 10,
   },
   imagePlaceholder: {
-    height: 150,
+    height: 300,
     backgroundColor: '#dfe6e9',
     justifyContent: 'center',
     alignItems: 'center',

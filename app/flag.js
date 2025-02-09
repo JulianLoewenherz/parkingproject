@@ -34,11 +34,11 @@ export default function FlagScreen() {
     }
   };
 
-  const submitImage = async() => {
-
-
-
-  }
+  const submitImage = async() => {  
+    Alert.alert("Success", "Image submitted successfully");
+    //setting image back to original 
+    setImage(null);
+  };
 
   return (
     <View style={styles.container}>
@@ -67,7 +67,7 @@ export default function FlagScreen() {
 
       {/* Footer Section */}
       <View style={styles.footer}>
-        <Button title="Submit Incident" onPress={() => { submitImage }} />
+        <Button title="Submit Incident" onPress={submitImage} />
         <Button title="Cancel" onPress={() => { () => router.push("/index")}} />
       </View>
     </View>
