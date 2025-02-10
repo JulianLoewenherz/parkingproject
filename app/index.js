@@ -10,8 +10,16 @@ export default function HomeScreen() {
     <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>
       <Text>Welcome to the Parking Enforcement App</Text>
       <Button
-        title="Go to Flag Page"
-        onPress={() => router.push("/flag")}
+        title="about us"
+        onPress={() => router.push("/about")}
+      />
+      <Button
+        title="login"
+        onPress={() => router.push("/login")}
+      />
+      <Button
+        title="Create Account"
+        onPress={()=> router.push("/createAccount")}
       />
     </View>
   );
