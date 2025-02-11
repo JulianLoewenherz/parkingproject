@@ -14,6 +14,10 @@ export default function HomeScreen() {
         title="Flag an incident"
         onPress={() => router.push('/flag')}
       />
+      <Button
+        title="See all my Flagging History"
+        onPress={() => router.push('/History')}
+      />
     </View>
   );
 }

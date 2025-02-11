@@ -5,6 +5,8 @@ import styles from '../styles/FlagScreenStyles';
 import { storage, database } from '../config/firebaseconfig';
 import { ref as storageRef, uploadBytesResumable, getDownloadURL } from 'firebase/storage';
 import { ref as databaseRef, push, set } from 'firebase/database';
+import { getAuth } from "firebase/auth"; //for userID submission
+
 
 export default function FlagScreen() {
   const [image, setImage] = useState(null);
@@ -41,7 +43,12 @@ export default function FlagScreen() {
     }
 
     try {
-  
+
+      //getting currenlty logged-in user
+      const auth = getAuth();
+      const user = auth.currentUser;
+      const userID = user.uid
+
       const response = await fetch(image);
       const blob = await response.blob();
 
@@ -58,14 +65,16 @@ export default function FlagScreen() {
       const incidentsRef = databaseRef(database, 'incidents');
       const newIncidentRef = push(incidentsRef);
       await set(newIncidentRef, {
+        userID: userID,
         imageUrl: downloadURL,
         timestamp: Date.now(),
+
       });
 
       Alert.alert("Success", "Image submitted successfully");
       // Reset the image state after submission
       setImage(null);
-      
+
     } catch (error) {
       console.error('Error uploading image:', error);
       Alert.alert("Upload Error", "There was an error uploading your image.");
